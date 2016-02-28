@@ -1,0 +1,9 @@
+Django
+dj-database-url
+mysqlclient
+hashids
+IPython[all]
+djangorestframework
+markdown
+django-filter
+fake-factory
