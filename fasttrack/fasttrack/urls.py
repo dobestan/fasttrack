@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # Custom Views
-    url(r'^', HomeTemplateView.as_view(), name="home"),
+    url(r'^', HomeAPIView.as_view(), name="home"),
 ]
