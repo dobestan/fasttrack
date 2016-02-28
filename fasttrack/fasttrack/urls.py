@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # Custom Views
-    url(r'^', HomeAPIView.as_view(), name="home"),
+    url(r'^$', HomeAPIView.as_view(), name="home"),
+    url(r'^go/$', GoView.as_view(), name="go"),
 ]
