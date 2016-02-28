@@ -4,6 +4,9 @@ from django.views.generic.base import RedirectView
 from django.core.urlresolvers import reverse
 
 
+from faker import Faker
+
+
 class GoView(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
@@ -19,3 +22,30 @@ class GoView(RedirectView):
             from_url = "http://" + from_url
 
         return to_url
+
+
+class GoRandomView(GoView):
+
+    def get_redirect_url(self, *args, **kwargs):
+        redirect_url = super(GoRandomView, self).get_redirect_url(*args, **kwargs)
+
+        fake = Faker()
+
+        utm_source = fake.text().split(" ")[0].lower()
+        utm_medium = fake.text().split(" ")[0].lower()
+        utm_campaign = fake.text().split(" ")[0].lower()
+
+        utm_paramters = "utm_source={utm_source}&utm_medium={utm_medium}&utm_campaign={utm_campaign}".format(
+            utm_source=utm_source,
+            utm_medium=utm_medium,
+            utm_campaign=utm_campaign,
+        )
+
+        if not "?" in redirect_url:
+            redirect_url = redirect_url + "?" + utm_paramters
+        else:
+            redirect_url = redirect_url + "&" + utm_paramters
+
+        print(redirect_url)
+
+        return redirect_url

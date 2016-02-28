@@ -11,5 +11,7 @@ urlpatterns = [
 
     # Custom Views
     url(r'^$', HomeAPIView.as_view(), name="home"),
+
     url(r'^go/$', GoView.as_view(), name="go"),
+    url(r'^go/random/$', GoRandomView.as_view(), name="go-random"),
 ]

@@ -6,3 +6,4 @@ IPython[all]
 djangorestframework
 markdown
 django-filter
+fake-factory
